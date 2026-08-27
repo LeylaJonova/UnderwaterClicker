@@ -29,16 +29,6 @@ jobs:
         pip install --upgrade pip
         pip install --upgrade cython==0.29.36 buildozer
 
-    - name: Force accept Android licenses
-      run: |
-        mkdir -p ~/.android
-        echo '### License accepted' > ~/.android/repositories.cfg
-        # Створюємо папку для Android SDK заздалегідь, щоб sdkmanager знав куди дивитися
-        export ANDROID_HOME="$HOME/.buildozer/android/platform/android-sdk"
-        mkdir -p $ANDROID_HOME
-        # Пробуємо прийняти ліцензії, якщо вони з'являться під час попереднього завантаження
-        yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true
-
     - name: Build with Buildozer
       run: |
         buildozer -v android debug
