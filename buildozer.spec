@@ -7,9 +7,9 @@ source.include_exts = py,kv,png,jpg,jpeg,ogg,mp3,ttf,woff,txt
 source.exclude_dirs = .venv,.idea,__pycache__,bin,build,.buildozer
 source.exclude_exts = pyc,pyo,xcf
 version = 1.0
-# Pin the stable Android runtime to Python 3.12.  charset-normalizer 2.x is
-# pure Python and avoids the incompatible Android wheel pulled by newer p4a.
-requirements = python3==3.12.11,hostpython3==3.12.11,kivy,charset-normalizer==2.1.1
+# Use the current Android Python runtime.  The application code is compatible
+# with it; charset-normalizer 2.x is pure Python and works on Android.
+requirements = python3,kivy,charset-normalizer==2.1.1
 orientation = portrait
 fullscreen = 1
 # Android build settings.
@@ -18,8 +18,7 @@ android.minapi = 24
 android.ndk = 25b
 android.archs = arm64-v8a
 android.accept_sdk_license = True
-# The develop branch contains the Android compatibility patch that excludes
-# CPython's unsupported grp module.  Python itself remains pinned to 3.12.
+# The develop branch contains current Android compatibility fixes.
 p4a.branch = develop
 [buildozer]
 log_level = 2
