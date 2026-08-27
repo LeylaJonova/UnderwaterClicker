@@ -31,6 +31,9 @@ jobs:
 
     - name: Build with Buildozer
       run: |
+        export ANDROID_HOME=""
+        export ANDROID_SDK_ROOT=""
+        export ANDROID_NDK_HOME=""
         while true; do yes; sleep 1; done | buildozer -v --debug android debug
         
     - name: Upload APK Artifact
