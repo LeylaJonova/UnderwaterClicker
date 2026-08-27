@@ -2,44 +2,30 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v4
+      - name: Check out the project
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
+      - name: Build debug APK
+        run: |
+          docker run --rm \
+            --volume "${{ github.workspace }}:/home/user/hostcwd" \
+            --workdir /home/user/hostcwd \
+            ghcr.io/kivy/buildozer:latest android debug
 
-    - name: Install Buildozer dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-          git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config \
-          zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev
-
-    - name: Install Buildozer and Cython
-      run: |
-        pip install --upgrade pip
-        pip install --upgrade cython==0.29.36 buildozer
-
-    - name: Build with Buildozer
-      run: |
-        export ANDROIDSDK="/home/runner/.buildozer/android/platform/android-sdk"
-        export ANDROIDNDK="/home/runner/.buildozer/android/platform/android-ndk-r25b"
-        export ANDROID_HOME="/home/runner/.buildozer/android/platform/android-sdk"
-        export ANDROID_SDK_ROOT="/home/runner/.buildozer/android/platform/android-sdk"
-        
-        yes | head -n 40 | buildozer -v android debug
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: package-apk
-        path: bin/*.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: underwater-clicker-apk
+          path: bin/*.apk
+          if-no-files-found: error
