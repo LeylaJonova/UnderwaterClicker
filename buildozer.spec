@@ -35,7 +35,6 @@ fullscreen = 1
 android.api = 33
 android.minapi = 23
 android.ndk = 25b
-android.sdk = 33
 
 # Архітектура більшості сучасних Android-пристроїв.
 android.archs = arm64-v8a
