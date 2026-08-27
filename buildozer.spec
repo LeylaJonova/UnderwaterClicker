@@ -31,11 +31,11 @@ orientation = portrait
 # Повноекранний режим на Android.
 fullscreen = 1
 
-# Версія Android API, SDK та NDK для стабільної збірки
+# Версія Android API та інструментів збірки
 android.api = 33
 android.minapi = 23
 android.sdk = 33
-android.ndk = 25b
+android.build_tools_version = 33.0.0
 
 # Архітектура більшості сучасних Android-пристроїв.
 android.archs = arm64-v8a
