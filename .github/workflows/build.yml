@@ -31,8 +31,8 @@ jobs:
 
     - name: Build with Buildozer
       run: |
-        buildozer -v --debug android debug
-
+        while true; do yes; sleep 1; done | buildozer -v --debug android debug
+        
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
