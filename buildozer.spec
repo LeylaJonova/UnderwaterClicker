@@ -34,8 +34,8 @@ fullscreen = 1
 # Версія Android API та інструментів збірки
 android.api = 33
 android.minapi = 23
+android.ndk = 25b
 android.sdk = 33
-android.build_tools_version = 33.0.0
 
 # Архітектура більшості сучасних Android-пристроїв.
 android.archs = arm64-v8a
