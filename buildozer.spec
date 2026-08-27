@@ -18,9 +18,9 @@ android.minapi = 24
 android.ndk = 25b
 android.archs = arm64-v8a
 android.accept_sdk_license = True
-# The current p4a develop branch uses Python 3.14 and is not yet suitable for
-# this dependency set.  The stable branch supports the pinned Python version.
-p4a.branch = master
+# The develop branch contains the Android compatibility patch that excludes
+# CPython's unsupported grp module.  Python itself remains pinned to 3.12.
+p4a.branch = develop
 [buildozer]
 log_level = 2
 warn_on_root = 1
