@@ -1,5 +1,6 @@
 [app]
 title = Underwater Clicker
+icon.filename = %(source.dir)s/assets/images/icon.png
 package.name = underwaterclicker
 package.domain = org.pythonexpert
 source.dir = .
