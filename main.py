@@ -212,6 +212,7 @@ Builder.load_string(r"""
         Label:
             id: stars_hint_label
             text: ""
+            font_name: "DejaVuSans.ttf"
             font_size: dp(16)
             bold: True
             color: 1, 0.9, 0.4, 0.9
